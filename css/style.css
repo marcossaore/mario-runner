@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.game-board {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 15px solid rgb(35, 160, 35);
+}
+
+.game-over-board {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  text-align: center;
+  padding: 40px;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+
+.game-over-board h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+
+.game-over-board p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: orange
+}
+
+.game-over-board button {
+  font-size: 20px;
+  border: none;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: orange;
+  color: #fff;
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+.sun {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  background: orange;
+  box-shadow: 0 0 10px orange, 0 0 60px orange, 0 0 200px yellow,
+    inset 0 0 80px yellow;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  position: absolute;
+  transition: transform 2s ease-out;
+  transform: scale(1.5) translate(-40px, 40px);
+}
+
+.sun-remove {
+  transform: scale(0.8) translate(-40px, 40px);
+  animation: hideSunOrMoon 2s ease-out;
+  opacity: 1;
+}
+
+.moon {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  box-shadow: 35px 35px 0 5px white;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  position: absolute;
+  transition: transform 2s ease-out;
+  transform: scale(1.5) translate(-80px, 0px);
+}
+
+.moon-remove {
+  transform: scale(0.8) translate(-40px, 40px);
+  animation: hideSunOrMoon 2s ease-out;
+  opacity: 1;
+}
+
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@-webkit-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@-moz-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@-ms-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+@-webkit-keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+@-moz-keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+@-ms-keyframes move-clouds-back {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+@keyframes hideSunOrMoon {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.sky,
+.sky-night,
+.twinkling,
+.clouds,
+.clouds-night {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sky {
+  background: linear-gradient(#87ceeb, #e0f6ff);
+  z-index: 0;
+}
+
+.sky-night {
+  background: #000
+    url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top
+    center;
+  z-index: 0;
+}
+
+.twinkling {
+  background: transparent
+    url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat
+    top center;
+  z-index: -1;
+
+  -moz-animation: move-twink-back 200s linear infinite;
+  -ms-animation: move-twink-back 200s linear infinite;
+  -o-animation: move-twink-back 200s linear infinite;
+  -webkit-animation: move-twink-back 200s linear infinite;
+  animation: move-twink-back 200s linear infinite;
+}
+
+.clouds {
+  background: transparent
+    url(http://www.script-tutorials.com/demos/360/images/clouds4.png) repeat top
+    center;
+  z-index: 3;
+
+  -moz-animation: move-clouds-back 200s linear infinite;
+  -ms-animation: move-clouds-back 200s linear infinite;
+  -o-animation: move-clouds-back 200s linear infinite;
+  -webkit-animation: move-clouds-back 200s linear infinite;
+  animation: move-clouds-back 200s linear infinite;
+}
+
+.clouds-night {
+  background: transparent
+    url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top
+    center;
+  z-index: 3;
+
+  -moz-animation: move-clouds-back 200s linear infinite;
+  -ms-animation: move-clouds-back 200s linear infinite;
+  -o-animation: move-clouds-back 200s linear infinite;
+  -webkit-animation: move-clouds-back 200s linear infinite;
+  animation: move-clouds-back 200s linear infinite;
+}
+
+.score {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: #212121;
+  padding: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  width: auto;
+  text-align: center;
+  color: white;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.pipe {
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  animation: pipe-animation 1.2s linear infinite;
+}
+
+.mario {
+  width: 150px;
+  position: absolute;
+  bottom: 0;
+  transition: bottom 1000ms;
+}
+
+.jump {
+  animation: jump 500ms ease-out;
+  transition: top 1000ms;
+}
+
+@keyframes pipe-animation {
+  from {
+    right: -80px;
+  }
+
+  to {
+    right: 100%;
+  }
+}
+
+@keyframes jump {
+  0% {
+    bottom: 0;
+  }
+
+  40% {
+    bottom: 180px;
+  }
+
+  50% {
+    bottom: 180px;
+  }
+
+  60% {
+    bottom: 180px;
+  }
+
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes cloudAnimation {
+  0% {
+    right: -120px;
+  }
+  100% {
+    right: 120%;
+  }
+}
